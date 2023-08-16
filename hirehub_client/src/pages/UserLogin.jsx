@@ -31,7 +31,6 @@ function Login() {
             const result = await auth.signInWithPopup(provider);
             const user = result.user;
             console.log(user);
-            console.log(user);
             console.log('Logged in user:', user.displayName);
             console.log(user.email);
             console.log(user.photoURL);
@@ -43,7 +42,7 @@ function Login() {
                     const result = res.data.userLogin
                     // ---Redux
                     if (result.Status) {
-
+                        
                         dispatch(UserActions.userAddDetails({ name: result.name, token: result.token, userId: result.userId }))
 
                     } else {

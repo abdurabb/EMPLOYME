@@ -4,13 +4,13 @@ import 'firebase/compat/storage'
 
 const firebaseConfig = {
   // Your Firebase configuration
-  apiKey:process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId:process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERId,
-  appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_Id
+  apiKey:"AIzaSyAkooINN8NtuIcSFoUeyX2XRa_wYLGeJfM",
+  authDomain:"hire-hub-de870.firebaseapp.com",
+  projectId:"hire-hub-de870",
+  storageBucket:"hire-hub-de870.appspot.com",
+  messagingSenderId:"767794697261",
+  appId:"1:767794697261:web:5a14cf5d90fe1ccc3c94a4",
+  measurementId:"G-BYV693W8KD"
 };
 
 // Initialize Firebase
