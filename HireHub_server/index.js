@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
 // Database Connect 
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://127.0.0.1:27017/hire_hub', { useNewUrlParser: true })
+mongoose.connect(process.env.MONGO_SERVER, { useNewUrlParser: true })
   .catch(e => {
     console.error('Connection error', e.message);
   });
