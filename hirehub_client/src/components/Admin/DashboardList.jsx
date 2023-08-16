@@ -21,8 +21,8 @@ function DashboardList() {
         fetchDatas()
     }, [])
     return (
-        <div className="container mx-auto p-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+        <div className="container mx-auto p-4  mt-24 xl:ml-32">
+            <div className=" ml-32 mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
 
                 {/* Card 1 */}
                 <div className="bg-white rounded-lg shadow-md p-6">
