@@ -20,7 +20,7 @@ function AdminNavbar() {
   }
 
   return (
-    <div className=' grid grid-cols-[3fr_7fr] sm:grid-cols-[1.5fr_8.5fr] w-full bg-gray-200  '>
+    <div className='fixed grid grid-cols-[3fr_7fr] sm:grid-cols-[1.5fr_8.5fr] w-full bg-gray-200  '>
       <div className='ml-9  py-4'>
         <h2 className='py-5 text-xl  uppercase'> <span className='text-gray-800 font-bold'>Employ</span><span className='text-amber-600 font-bold'>Me</span></h2>
       </div>

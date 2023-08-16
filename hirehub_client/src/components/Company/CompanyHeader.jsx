@@ -38,7 +38,7 @@ function CompanyHeader() {
                         <li className='md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500'><Link to={'/company_profile'}>Profile</Link></li>
 
                         <li className='hover:cursor-pointer md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500' ><Link to={'/companyChat'}><AiOutlineMessage /></Link></li>
-                        <MdOutlineNotifications className='hover:cursor-pointer md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500' />
+                        {/* <MdOutlineNotifications className='hover:cursor-pointer md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500' /> */}
 
                         <button onClick={handleLogOut} className='bg-indigo-600 text-white font-[Poppins] py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500'>LogOut</button>
                     </ul>

@@ -39,14 +39,14 @@ function AdminPremium() {
     return (
         <>
 
-            <div className=''>
-                <div className='p-4  '>
+            <div className='mt-24 xl:ml-32'>
+                <div className='p-4 ml-32 '>
                     <button className='bg-red-300 border rounded-xl p-2' onClick={() => { navigate('/createPremium') }}  >Create New Premium </button>
                 </div>
 
                 {datas.length > 0 ?
-                    <div className='flex justify-center items-center ml-14' >
-                        <table className="bg-white border border-gray-300">
+                    <div className=' ml-32 flex justify-center items-center ml-14' >
+                        <table className="ml-14 w-full h-auto overflow-x-auto overflow-y-auto bg-white border border-gray-300">
                             <thead>
                                 <tr>
                                     <th className="py-3 px-6 bg-gray-100 font-semibold uppercase text-sm text-gray-600 border-b border-gray-300">Sl-No</th>

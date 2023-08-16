@@ -58,12 +58,12 @@ function AdminCategory() {
     return (
         <>
 
-            <div className=''>
-                <div className='p-4  '>
+            <div className='mt-24 xl:ml-32'>
+                <div className='p-4 ml-32 '>
                     <button className='bg-red-100' onClick={handleCreate}>Create Category</button>
                 </div>
                 {data.length > 0 ?
-                    <div className=' flex justify-center items-center ml-14' >
+                    <div className='ml-32 flex justify-center items-center ml-14 w-full h-auto overflow-x-auto overflow-y-auto' >
                         <table className=" display text-dark bg-white table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr>

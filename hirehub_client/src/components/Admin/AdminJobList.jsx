@@ -25,7 +25,7 @@ function AdminJobList() {
   const DetailCard = ({ jobTitle, subCategory, id, qualification, description, experience, location, companyName, salary, skills }) => {
 
     return (
-      <div className='flex justify-center'>
+      <div className='flex justify-center '>
         <div className=" text-center bg-gray-100 shadow-md p-4 rounded-md">
           <h2 className="text-xl font-semibold mb-2 flex justify-center">{jobTitle}</h2>
           <p className="text-gray-600 mb-4">Company :{companyName}</p>
@@ -47,15 +47,15 @@ function AdminJobList() {
     <div>
       {!modal ?
 
-        <div className=" container mx-auto p-4  ">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-4">
+        <div className=" mt-24 ml-24 xl:ml-32 container mx-auto p-4  ">
+          <div className=" mt-24 xl:ml-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4 gap-4">
             {jobss.map((job) => (
               <div
                 key={job.id}
-                className="bg-white rounded-lg shadow-md p-4"
+                className="bg-white rounded-lg shadow-md p-4 h-full"
               >
                 <h2 className="text-xl font-semibold mb-2"> Position:{job.position}</h2>
-                <p className="text-gray-600 mb-2">SubCategory: {job.subCategory}</p>
+                {/* <p className="text-gray-600 mb-2">SubCategory: {job.subCategory}</p> */}
                 <p className="text-gray-500"> Location:{job.location}</p>
                 <p className="text-gray-500"> company:{job.company.company_name}</p>
                 <div className='w-full'>
@@ -71,7 +71,7 @@ function AdminJobList() {
 
         :
 
-        <div className="container  mx-auto p-4">
+        <div className="container flex justify-center mt-24 xl:ml-32  mx-auto p-4">
           {/* <h1>{detail}</h1> */}
           
           {/* ----------------- */}

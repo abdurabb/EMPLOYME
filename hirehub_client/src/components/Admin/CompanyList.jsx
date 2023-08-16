@@ -26,13 +26,13 @@ function CompanyList() {
     }
 
     return (
-        <div>
+        <div className='mt-24 xl:ml-32'>
             {data.length > 0 ?
-                <div className='flex justify-center pt-4 ml-14 ' >
-                    <table className="bg-white border border-gray-300 table-auto  ">
+                <div className='ml-32 flex justify-center pt-4 ml-14 w-full h-auto overflow-x-auto overflow-y-auto' >
+                    <table className="bg-white border border-gray-300  min-w-full  ">
                         <thead>
                             <tr>
-                                <th className="py-3 px-6 bg-gray-100 font-semibold uppercase text-sm text-gray-600 border-b border-gray-300">Sl-No</th>
+                               
                                 <th className="py-3 px-6 bg-gray-100 font-semibold uppercase text-sm text-gray-600 border-b border-gray-300">Image</th>
                                 <th className="py-3 px-6 bg-gray-100 font-semibold uppercase text-sm text-gray-600 border-b border-gray-300">Name</th>
                                 <th className="py-3 px-6 bg-gray-100 font-semibold uppercase text-sm text-gray-600 border-b border-gray-300">Address</th>
@@ -49,7 +49,7 @@ function CompanyList() {
                             {data.map((data, index) => {
                                 return (
                                     <tr>
-                                        <td className="py-4 px-6 border-b border-gray-300">{index + 1}</td>
+                                       
                                         <td className="py-4 px-6 border-b border-gray-300"> {data.Image ? <img class="w-10 h-10 rounded-full" src={data.Image} alt=""></img> : ' '}</td>
                                         <td className="py-4 px-6 border-b border-gray-300"> {data.company_name}</td>
                                         <td className="py-4 px-6 border-b border-gray-300">{data.address}</td>

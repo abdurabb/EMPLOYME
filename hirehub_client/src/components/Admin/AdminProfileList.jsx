@@ -117,9 +117,9 @@ function AdminProfileList() {
   }, [modal])
 
   return (
-    <div className='flex bg-gray-100 w-full'>
+    <div className='flex bg-gray-100 w-full ml:24 ml:14 mt-24 xl:ml-32 '>
       <div>
-        <div className=" min-h-screen p-8">
+        <div className=" min-h-screen p-8 ml:24 mt-24 xl:ml-32">
           <div className="w-screen max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-md">
             <div className="bg-indigo-400 text-white text-center py-4">
               <h1 className="text-2xl font-semibold">Admin  Profile</h1>
@@ -149,7 +149,7 @@ function AdminProfileList() {
       {/* ---------------- */}
       {modal ?
         <div>
-          <div className=" min-h-screen p-8">
+          <div className=" min-h-screen p-8  mt-24 ">
             <div className="w-screen max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-md">
               <div className="bg-indigo-400 text-white text-center py-4">
                 <h1 className="text-2xl font-semibold">Update Profile</h1>

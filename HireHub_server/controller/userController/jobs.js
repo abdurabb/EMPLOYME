@@ -47,7 +47,29 @@ const jobData = async (req, res) => {
     }
 }
 
+// Latest Job Getting Here
+const latestJobGetting = async (req, res) => {
+    try {
+
+        const latestJob = await Job.find({hiringClosed:false}).sort({Hiring_Date:-1}).limit(3).populate('company')
+        if(latestJob){
+            return res.status(200).json({
+                success: true,
+                messege: 'Success',
+                latestJob
+            })
+        }
+
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            messege: 'Something Wrong',
+            error: error
+        })
+    }
+
+}
 
 module.exports = {
-    jobData
+    jobData, latestJobGetting
 }

@@ -14,7 +14,7 @@ function AdminSidebar() {
     // }, [])
 
     return (
-        <div className="h-screen  bg-gray-200 py-4 w-1/6 pt-16  font-serif">
+        <div className="h-screen fixed mt-24 bg-gray-200 py-4 w-1/6 pt-16  font-serif">
             <div onClick={() => {
                 setHandle('dashboard')
                 navigate('/dashboard')
