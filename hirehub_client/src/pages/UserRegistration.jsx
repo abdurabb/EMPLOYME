@@ -131,7 +131,7 @@ function UserRegistration() {
     const onSubmit = async (values) => {
         const phoneNum = `+91${values.phone}`
         setPhone(phoneNum)
-
+        console.log('onsubmit');
 
         try {
             let userCheck = await UserApi.post('/userCheck', { values })
