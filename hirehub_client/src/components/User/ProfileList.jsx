@@ -22,6 +22,7 @@ function ProfileList() {
 
         }).catch((err) => {
           console.log(err);
+          navigate('/error_server')
         })
       }
     }
