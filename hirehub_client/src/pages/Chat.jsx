@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import UserHeader from '../components/User/UserHeader'
 import jwtDecode from 'jwt-decode';
 import { UserApi } from '../Api/UserApi'
@@ -14,6 +14,22 @@ function Chat() {
   const [messege, setMessege] = useState('') // here sending the new messege
   const [chatId, setChatId] = useState() // here storing the chat id
   const [arrivalMessege, setArrivalMessege] = useState()
+  const chatContainerRef = useRef(null);
+
+
+
+  useEffect(() => {
+    // Whenever messages are updated, scroll to the bottom
+    scrollToBottom();
+  }, [messege, arrivalMessege]);
+
+  // Function to scroll chat container to the bottom
+  function scrollToBottom() {
+    if (chatContainerRef.current) {
+      console.log('inside the scrooll');
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }
 
   const socket = io.connect(process.env.REACT_APP_SERVER_URL);
 
@@ -80,6 +96,26 @@ function Chat() {
     });
   }
 
+
+  // Display The Date on The Messeges
+  const formatTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    if (date >= today) {
+      return 'Today';
+    } else if (date >= yesterday) {
+      return 'Yesterday';
+    } else {
+      const options = { year: 'numeric', month: 'short', day: 'numeric' };
+      return date.toLocaleDateString(undefined, options);
+    }
+  };
+
+
   return (
     <div>
       <UserHeader />
@@ -97,6 +133,7 @@ function Chat() {
                 setCompanyId(chat.companyId)
                 setCompany(chat.company)
                 handleChat(chat.chatId)
+                scrollToBottom();
               }}>
                 <div className='flex '>
                   <div>
@@ -135,19 +172,35 @@ function Chat() {
                 </div>
               </div>
               {/* Chat messages */}
-              <div className="flex-grow p-4 overflow-scroll ">
+              <div className="flex-grow p-4 overflow-scroll " id="chat-container" ref={chatContainerRef} >
                 {/* Render chat messages here */}
-                {chatMesseges.map((messege) => {
+                {chatMesseges.map((messege, index) => {
+                  const date = new Date(messege.timestamp);
+                  const hours = date.getHours();
+                  const minutes = date.getMinutes();
+                  const ampm = hours >= 12 ? 'pm' : 'am';
+                  const hours12 = hours % 12 || 12;
+
+                  const displayDate = formatTimestamp(messege.timestamp);
+                  const shouldDisplayDate = index === 0 || displayDate !== formatTimestamp(chatMesseges[index - 1].timestamp);
                   return (
                     <>
-                      {console.log(userId)}
 
-                      <div className={`h-[80px] w-[300px] bg-gray-200 rounded-b-lg rounded-tr-xl m-2 p-4 ${messege.sender === userId ? 'ml-auto' : ''} `}>
+                      {shouldDisplayDate && (
+                        <div className="text-center text-gray-500 mt-2">{displayDate}</div>
+                      )}
+
+                      <div className={` w-[200px] bg-gray-200 rounded-b-lg rounded-tr-xl m-2 p-4 ${messege.sender === userId ? 'ml-auto' : ''} `}>
                         {messege.messege}
+                        <div className='text-end text-sm'>
+                          {`${hours12}:${minutes.toString().padStart(2, '0')} ${ampm}`}
+                        </div>
                       </div>
                       {/* <div className='h-[80px] w-[300px] bg-gray-400 rounded-b-lg rounded-tr-xl m-2 ml-auto p-4'>{messege.messege}</div> */}
                     </>
                   )
+
+
 
                 })}
               </div>

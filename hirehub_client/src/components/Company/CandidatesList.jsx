@@ -11,6 +11,7 @@ function CandidatesList() {
   const [companyId, setCompanyId] = useState()
   const [applicationData, setApplicationData] = useState([])
   const [modal, setModal] = useState(false)
+  const [index,setIndex] = useState()
 
 
   const handleStatus = (event, id) => {
@@ -76,8 +77,10 @@ function CandidatesList() {
 
                 <tbody className='text-center'>
 
-                  {applicationData.map((data) => (
+                  {applicationData.map((data,index) => (
+                    
                     <tr key={data._id} className="border-b border-gray-300">
+                      
                       <td className="px-4 py-2">{data.job.position}</td>
                       <td className="px-4 py-2">{data.user.first_name}</td>
                       <td className="px-4 py-2">{data.user.email}</td>
@@ -85,6 +88,7 @@ function CandidatesList() {
                       <td className="px-4 py-2">{data.user.qualification}</td>
                       <td className="px-4 py-2"><button className='bg-gray-200 p-2 rounded-xl'
                         onClick={() => {
+                          setIndex(index)
                           setModal(true)
                         }}
                       >View</button></td>
@@ -139,6 +143,8 @@ function CandidatesList() {
             {/* <h1>{detail}</h1> */}
 
             {/* ----------------- */}
+            {console.log(applicationData[index])}
+            {console.log(index)}
             <div className="bg-gray-200 w-full ">
 
               <div className="bg-gray-300 p-8 rounded-lg shadow-md ">
@@ -148,16 +154,16 @@ function CandidatesList() {
                   }}>close</button></div>
 
 
-                {applicationData.map((data) => (
+                
 
                   <div className=" mx-auto p-4">
                     <h2 className="text-center text-2xl font-semibold text-blue-500 mb-4">Employee Details</h2>
                     <div className="grid grid-cols-8 gap-4">
 
                       <div className="col-span-8">
-                        {data.user.Image ?
+                        {applicationData[index].user.Image ?
                           <img
-                            src={data.user.Image ? data.user.Image : ''}
+                            src={applicationData[index].user.Image ? applicationData[index].user.Image : ''}
                             alt="User Avatar"
                             className="w-32 h-32 rounded-full mx-auto"
                           />
@@ -173,21 +179,21 @@ function CandidatesList() {
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 htmlFor="">Candidate's Name : </h1>
-                          <h2 className='ml-4'>{data.user.first_name + '  ' + data.user.last_name}</h2>
+                          <h2 className='ml-4'>{applicationData[index].user.first_name + '  ' + applicationData[index].user.last_name}</h2>
                         </div>
                       </div>
 
                       <div className="col-span-2">
                         <div className='flex '>
                           <h1 > Gender : </h1>
-                          <h1 className='ml-4'>{data.user.gender}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.gender}</h1>
                         </div>
                       </div>
 
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > Date of Birth : </h1>
-                          <h1 className='ml-4'>{data.user.dob}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.dob}</h1>
                         </div>
                       </div>
 
@@ -195,21 +201,21 @@ function CandidatesList() {
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > Email : </h1>
-                          <h1 className='ml-4'>{data.user.email}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.email}</h1>
                         </div>
                       </div>
 
                       <div className="col-span-2">
                         <div className='flex '>
                           <h1 > Phone Number : </h1>
-                          <h1 className='ml-4'>{data.user.mobile}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.mobile}</h1>
                         </div>
                       </div>
 
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > Qualification : </h1>
-                          <h1 className='ml-4'>{data.user.qualification}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.qualification}</h1>
                         </div>
                       </div>
 
@@ -217,21 +223,21 @@ function CandidatesList() {
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > Address : </h1>
-                          <h1 className='ml-4'>{data.user.address}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.address}</h1>
                         </div>
                       </div>
 
                       <div className="col-span-2">
                         <div className='flex '>
                           <h1 > City : </h1>
-                          <h1 className='ml-4'>{data.user?.city}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user?.city}</h1>
                         </div>
                       </div>
 
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > District : </h1>
-                          <h1 className='ml-4'>{data.user.district}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.district}</h1>
                         </div>
                       </div>
 
@@ -239,21 +245,21 @@ function CandidatesList() {
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > State : </h1>
-                          <h1 className='ml-4'>{data.user.state}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.state}</h1>
                         </div>
                       </div>
 
                       <div className="col-span-2">
                         <div className='flex '>
                           <h1 > Country : </h1>
-                          <h1 className='ml-4'>{data.user.country}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.country}</h1>
                         </div>
                       </div>
 
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > Zip Code : </h1>
-                          <h1 className='ml-4'>{data.user.zipCode}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.zipCode}</h1>
                         </div>
                       </div>
 
@@ -262,21 +268,21 @@ function CandidatesList() {
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > Position : </h1>
-                          <h1 className='ml-4'>{data.user.post}</h1>
+                          <h1 className='ml-4'>{applicationData[index].user.post}</h1>
                         </div>
                       </div>
 
                       <div className="col-span-2">
                         <div className='flex '>
                           <h1 > Skill : </h1>
-                          <h1 className='ml-4'>{data.skill}</h1>
+                          <h1 className='ml-4'>{applicationData[index].skill}</h1>
                         </div>
                       </div>
 
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > Experience: </h1>
-                          <h1 className='ml-4'>{data.experience}</h1>
+                          <h1 className='ml-4'>{applicationData[index].experience}</h1>
                         </div>
                       </div>
 
@@ -287,20 +293,20 @@ function CandidatesList() {
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > Plust Two : </h1>
-                          <h1 className='ml-4'>{data.plusTwo}</h1>
+                          <h1 className='ml-4'>{applicationData[index].plusTwo}</h1>
                         </div>
                       </div>
 
                       <div className="col-span-2">
                         <div className='flex '>
                           <h1 > Degree : </h1>
-                          <h1 className='ml-4'>{data.degree}</h1>
+                          <h1 className='ml-4'>{applicationData[index].degree}</h1>
                         </div>
                       </div>
                       <div className="col-span-3">
                         <div className='flex '>
                           <h1 > Other Qualification : </h1>
-                          <h1 className='ml-4'>{data.otherQualification}</h1>
+                          <h1 className='ml-4'>{applicationData[index].otherQualification}</h1>
                         </div>
                       </div>
 
@@ -311,7 +317,7 @@ function CandidatesList() {
                           <h1> Sslc Certificate: </h1>
                           <a
                             className="ml-4 bg-gray-200 p-1 rounded-xl"
-                            href={data.sslcCertificate}  // Provide the correct URL from your Firebase database
+                            href={applicationData[index].sslcCertificate}  // Provide the correct URL from your Firebase database
                             download   // This attribute indicates that the browser should download the file
                           >
                             Download
@@ -324,7 +330,7 @@ function CandidatesList() {
                           <h1> Plust Two Certificate: </h1>
                           <a
                             className="ml-4 bg-gray-200 p-1 rounded-xl"
-                            href={data.sslcCertificate}  // Provide the correct URL from your Firebase database
+                            href={applicationData[index].sslcCertificate}  // Provide the correct URL from your Firebase database
                             download   // This attribute indicates that the browser should download the file
                           >
                             Download
@@ -337,7 +343,7 @@ function CandidatesList() {
                           <h1> Other Qualification Certificate: </h1>
                           <a
                             className="ml-4 bg-gray-200 p-1 rounded-xl"
-                            href={data.sslcCertificate}  // Provide the correct URL from your Firebase database
+                            href={applicationData[index].sslcCertificate}  // Provide the correct URL from your Firebase database
                             download   // This attribute indicates that the browser should download the file
                           >
                             Download
@@ -350,7 +356,7 @@ function CandidatesList() {
                           <h1> Candidate's CV: </h1>
                           <a
                             className="ml-4 bg-gray-200 p-1 rounded-xl"
-                            href={data.sslcCertificate}  // Provide the correct URL from your Firebase database
+                            href={applicationData[index].sslcCertificate}  // Provide the correct URL from your Firebase database
                             download   // This attribute indicates that the browser should download the file
                           >
                             Download
@@ -358,14 +364,14 @@ function CandidatesList() {
                         </div>
                       </div>
                       <div className="bg-blue-500 text-white text-center  col-span-8">
-                        <button type='submit' className='bg-blue-500 hover:bg-blue-800 rounded-xl font-semibold p-3'
-                        >Update Status</button>
+                        {/* <button type='submit' className='bg-blue-500 hover:bg-blue-800 rounded-xl font-semibold p-3'
+                        >Update Status</button> */}
                       </div>
 
                     </div>
                   </div>
 
-                ))}
+               
 
 
               </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 
 function UserFooter() {
+    
     return (
         <div>
             <footer className='bg-gray-300 mt-1 text-white'>
@@ -41,7 +42,7 @@ function UserFooter() {
 
                 </div>
 
-                <div className='flex justify-end text-teal-500'>
+                {/* <div className='flex justify-end text-teal-500'>
                     <span className='p-2 cursor-pointer inline-flex items-center rounded-full bg-gray-700 mx-1.5 
                     text-xl hover:text-gray-100 hover:bg-teal-500 duration-300'>
                         f
@@ -59,7 +60,7 @@ function UserFooter() {
                         L
                     </span>
 
-                </div>
+                </div> */}
             </footer>
 
         </div>

@@ -45,7 +45,7 @@ function ProfileList() {
     const planId = sessionData.planId
 
     if (sessionId) {
-      
+
       console.log(user);
       UserApi.patch('/confirmation', { sessionId, userId, planId }).then((res) => {
         toast.success(res.data.messege, {
@@ -63,11 +63,13 @@ function ProfileList() {
     } else {
       console.log('NO Session Id');
     }
-  },[userId])
+  }, [userId])
 
 
   let dateString = ''
   if (user) {
+    console.log(user.planEndingDate);
+    console.log(new Date() + '   ' + 'date now');
     const date = new Date(user.planEndingDate);
     dateString = date.toLocaleDateString('en-US')
   }
@@ -108,8 +110,10 @@ function ProfileList() {
               <p className="text-gray-700 font-bold">Qualification: {user ? user.qualification : ''}</p>
               <div className='flex justify-between'>
                 <p className="text-gray-700 font-bold">Plan Expire :{'  ' + dateString}</p>
-                <button className='bg-blue-500 p-2 rounded-xl text-white'
-                  onClick={handleReniew}>Reniew Your Plan</button>
+                {
+                  new Date() <= Date.now() ? '' :
+                    <button className='bg-blue-500 p-2 rounded-xl text-white'
+                      onClick={handleReniew}>Reniew Your Plan</button>}
               </div>
 
 

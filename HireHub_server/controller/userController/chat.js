@@ -42,7 +42,7 @@ const getMesseges = async (req, res) => {
         const chatData = await Chat.findById({ _id: chatId }).exec();
         const data = await Promise.all(chatData.messages.map(async (messege) => {
             return (
-                await Message.findById({ _id: messege })
+                await Message.findById({ _id: messege })   
             )
         }))
 
