@@ -110,8 +110,9 @@ function ProfileList() {
               <p className="text-gray-700 font-bold">Qualification: {user ? user.qualification : ''}</p>
               <div className='flex justify-between'>
                 <p className="text-gray-700 font-bold">Plan Expire :{'  ' + dateString}</p>
+                
                 {
-                  new Date() <= Date.now() ? '' :
+                   new Date() <= Date.now()? '' :
                     <button className='bg-blue-500 p-2 rounded-xl text-white'
                       onClick={handleReniew}>Reniew Your Plan</button>}
               </div>

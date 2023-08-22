@@ -32,9 +32,10 @@ const checkOut = async (req, res) => {
         const plan = await Premium.findOne({ _id: planId })
         // Assuming you have the correct price ID for the product you want to sell
         const priceId = plan.planPrice
+       
 
         if (jobId && jobId.length > 4) {
-
+            
             const session = await stripe.checkout.sessions.create({
                 line_items: [
                     {
@@ -49,8 +50,8 @@ const checkOut = async (req, res) => {
                     },
                 ],
                 mode: 'payment',
-                success_url: `http://localhost:3000/jobApply?session_id={CHECKOUT_SESSION_ID}&planId=${planId}&jobId=${jobId}`,
-                cancel_url: 'http://localhost:3000/planList',
+                success_url: `${process.env.CLIENT_URL}/jobApply?session_id={CHECKOUT_SESSION_ID}&planId=${planId}&jobId=${jobId}`,
+                cancel_url: `${process.env.CLIENT_URL}/planList`,
             });
 
             res.json({ url: session.url })
@@ -70,8 +71,8 @@ const checkOut = async (req, res) => {
                     },
                 ],
                 mode: 'payment',
-                success_url: `http://localhost:3000/profile?session_id={CHECKOUT_SESSION_ID}&planId=${planId}`,
-                cancel_url: 'http://localhost:3000/planList',
+                success_url: `${process.env.CLIENT_URL}/profile?session_id={CHECKOUT_SESSION_ID}&planId=${planId}`,
+                cancel_url: `${process.env.CLIENT_URL}/planList`,
             });
 
             res.json({ url: session.url })
