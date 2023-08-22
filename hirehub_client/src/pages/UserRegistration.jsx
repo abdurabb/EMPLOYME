@@ -512,7 +512,7 @@ function UserRegistration() {
                                             <input className="p-2  rounded-xl border w-4/5"
                                                 type="text"
                                                 name="post"
-                                                placeholder="post"
+                                                placeholder="Your Profession"
                                                 onChange={formik.handleChange}
                                                 onBlur={formik.handleBlur}
                                                 value={formik.values.post}
