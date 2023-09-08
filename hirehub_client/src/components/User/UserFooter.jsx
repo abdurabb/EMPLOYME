@@ -7,7 +7,8 @@ function UserFooter() {
             <footer className='bg-gray-300 mt-1 text-white'>
                 <div className='md:flex text-black-500 md:justify-between md:items-center sm:px-12 px-4 bg-[#ffffff19] pt-4 '>
                     <h1 className='lg:text text-black 4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-size-md:w-2/5'>
-                        <span className='text-black'>Free</span>until you're ready to luanch
+                        <span className='text-black'></span> You're ready to Build Your Career
+                        {/* until */}
                     </h1>
                     <div>
                         <input type="text" placeholder='Enter Your ph.no' className='text-gray-800 sm:w-72 w-full sm:mr-1 lg:mb-0 mb-4 py-2.5

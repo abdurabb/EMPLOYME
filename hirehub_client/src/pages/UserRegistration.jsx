@@ -93,7 +93,7 @@ function UserRegistration() {
         } catch (error) {
             console.log(error + 'error in otp submit side');
             toast.error('Incorect Otp', {
-                duration: 5000,
+                duration: 3000,
                 position: 'top-center',
                 style: {
                     background: '#ff0000',

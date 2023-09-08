@@ -16,7 +16,7 @@ function SectionLandPage() {
     return (
         <div>
             <div className='mt-2 bg-gray-200 font-[Poppins]'>
-                <h1 className='ml-2 mt-2 text-3xl text-gray-800 font-bold'>Latest Job Listing</h1>
+                <h1 className='ml-3 mt-3 text-3xl text-gray-800 font-bold'>Latest Job Listing</h1>
 
 
                 <div class="flex flex-wrap justify-center">
@@ -24,7 +24,9 @@ function SectionLandPage() {
                         return (
                             <div key={index} class="w-full md:w-1/2 lg:w-1/4 p-4">
                                 <div class="bg-blue-100 rounded-lg p-4">
-                                    <img src={job.company.Image} className='w-full  h-32' alt="Job Image" class="w-full h-auto mb-4" />
+                                    <div className='w-full h-40'> {/* Set a fixed height for the image container */}
+                                        <img src={job.company.Image} className='w-full h-full object-cover' alt="Job Image" />
+                                    </div>
 
                                     <div className='mt-2'>
                                         <h3 class="text-xl font-semibold mb-2">Position :  {job.position}</h3>

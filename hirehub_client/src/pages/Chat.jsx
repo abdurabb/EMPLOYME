@@ -206,17 +206,19 @@ function Chat() {
               </div>
 
               {/* Message input */}
-              <div className=" flex ml-2 mr-2 bg-gray-200 p-4 ">
-                <input
-                  type="text"
-                  value={messege}
-                  onChange={(e) => {
-                    setMessege(e.target.value)
-                  }}
-                  className="w-full rounded-full py-2 px-4 border focus:outline-none focus:border-blue-500"
-                  placeholder="Type your message..."
-                />
-                <button className='bg-green-500 rounded-xl p-2 ml-2' onClick={messegeSendHandle}>Send</button>
+              <div className="relative w-full   h-screen text-center">
+                <div className="fixed bottom-0  flex ml-2 w-full mr-2 bg-gray-200 p-4 ">
+                  <input
+                    type="text"
+                    value={messege}
+                    onChange={(e) => {
+                      setMessege(e.target.value)
+                    }}
+                    className="w-1/2 rounded-full py-2 px-4 border focus:outline-none focus:border-blue-500"
+                    placeholder="Type your message..."
+                  />
+                  <button className='bg-green-500 rounded-xl p-2 ml-2' onClick={messegeSendHandle}>Send</button>
+                </div>
               </div>
             </div>
 

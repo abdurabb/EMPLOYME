@@ -190,6 +190,7 @@ function CompanyChat() {
                                     )
                                 })}
                             </div>
+                            
                             <div className="flex ml-2 mr-2 bg-gray-300 p-4">
                                 <input
                                     type="text"
