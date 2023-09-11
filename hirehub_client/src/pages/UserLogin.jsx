@@ -27,7 +27,7 @@ function Login() {
 
         const provider = new firebase.auth.GoogleAuthProvider();
         try {
-            console.log('hello');
+            
             const result = await auth.signInWithPopup(provider);
             const user = result.user;
             console.log(user);

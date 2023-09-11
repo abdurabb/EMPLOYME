@@ -11,10 +11,11 @@ function UserFooter() {
                         {/* until */}
                     </h1>
                     <div>
-                        <input type="text" placeholder='Enter Your ph.no' className='text-gray-800 sm:w-72 w-full sm:mr-1 lg:mb-0 mb-4 py-2.5
-                        rounded px-2 focus:outline-none' />
-                        <button className='bg-teal-400 hover:bg-teal-500 duration-300 px-5 py-2.5 font-[Poppins]
-                        rounded-md text-white md:w-auto w-full'>Request Code</button>
+                        {/* <input type="text" placeholder='Enter Your ph.no' className='text-gray-800 sm:w-72 w-full sm:mr-1 lg:mb-0 mb-4 py-2.5
+                        rounded px-2 focus:outline-none' /> */}
+                        <h1 className='lg:text text-black 4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-size-md:w-2/5'><span className='text-black'> We are Helping to get Good Jobs</span></h1>
+                        {/* <button className='bg-teal-400 hover:bg-teal-500 duration-300 px-5 py-2.5 font-[Poppins]
+                        rounded-md text-white md:w-auto w-full'>Request Code</button> */}
                     </div>
                 </div>
 
