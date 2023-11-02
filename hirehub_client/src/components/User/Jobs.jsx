@@ -107,7 +107,7 @@ function Jobs() {
         element === id)
     })
     return (
-      <div className=" text-center bg-gray-100 shadow-md p-4 rounded-md">
+      <div className=" text-center bg-gray-100 shadow-md p- rounded-md">
         <img className=' w-full  h-24 sm:h-32 md:h-40 lg:h-48 xl:h-56' src={image} alt="" />
         <h2 className="text-xl font-semibold mb-2 flex justify-center">{jobTitle}</h2>
         <p className="text-gray-600 mb-4">Company :{companyName}</p>
@@ -137,7 +137,7 @@ function Jobs() {
         element === id)
     })
     return (
-      <div className=" text-center bg-gray-100 shadow-md p-4 rounded-md">
+      <div className=" text-center bg-gray-100 shadow-md p-4  rounded-md">
         <h2 className="text-xl font-semibold mb-2 flex justify-center">{jobTitle}</h2>
         <p className="text-gray-600 mb-4">Company :{companyName}</p>
         <p className="text-gray-600 mb-4">Sub Category:{subCategory}</p>

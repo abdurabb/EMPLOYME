@@ -160,7 +160,7 @@ function Login() {
                         <p className='flex justify-center text-sm mt-4 text-[#002074]'>if you already a member, easily log in</p>
                         <form action="" onSubmit={formik.handleSubmit} className='flex flex-col gap-4'>
                             <input className='p-2 mt-8 rounded-xl border'
-                                type="email"
+                                // type="email"
                                 name='email'
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}

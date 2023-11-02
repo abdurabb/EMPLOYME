@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { UserApi } from '../Api/UserApi';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { auth, firebase } from '../firebase/config'
+// import { auth, firebase } from '../firebase/config'
 import { toast } from 'react-hot-toast';
 import { storage } from '../firebase/config';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
@@ -12,10 +12,10 @@ function UserRegistration() {
     const navigate = useNavigate()
     const [modal, setModal] = useState(false);
     const [otp, setOtp] = useState('')
-    const [result, setResult] = useState({})
+    // const [result, setResult] = useState({})
     const [image, setImage] = useState()
-    const [phone, setPhone] = useState()
-    const [verify, setVerify] = useState()//firebase verify storing in state for use resend otp
+    // const [phone, setPhone] = useState()
+    // const [verify, setVerify] = useState()//firebase verify storing in state for use resend otp
 
     // ----------
     const [remainingTime, setRemainingTime] = useState(); // Set the initial countdown time in seconds
@@ -59,17 +59,18 @@ function UserRegistration() {
     const otpSubmit = async (e) => {
         try {
             e.preventDefault()
-            const confirm = await result.confirm(otp)
-            console.log(confirm);
+            // const confirm = await result.confirm(otp)
+            // console.log(confirm);
+
             const values = formik.values;
-            
+
             // const storage = getStorage();
             const storageRef = ref(storage, `images/userImages/${image.name}`);
             // 'file' comes from the Blob or File API
             uploadBytes(storageRef, image).then((snapshot) => {
                 getDownloadURL(snapshot.ref).then((url) => {
                     console.log(url);
-                    UserApi.post('/registerUser', { values, url }).then((res) => {
+                    UserApi.post('/registerUser', { values, url, otp }).then((res) => {
                         toast.success('Successfully Registred', {
                             duration: 3000,
                             position: 'top-center',
@@ -80,7 +81,20 @@ function UserRegistration() {
                         })
                         navigate('/login')
                     }).catch((err) => {
-                        console.log(err + 'in user image upload and post user Details ');
+                        console.log(err);
+                        console.log('in user image upload and post user Details ');
+
+                        toast.error('Incorect Otp', {
+                            duration: 3000,
+                            position: 'top-center',
+                            style: {
+                                background: '#ff0000',
+                                color: '#fff',
+                            },
+                        });
+
+
+
                     })
                 }).catch((err) => {
                     console.log(err);
@@ -103,54 +117,57 @@ function UserRegistration() {
         }
     }
 
-    const resentHandle = () => {
-        
-        console.log(phone+'asdf');
-        console.log(verify+'sdaf');
-        setIsSubmitDisabled(true);
-        
-        auth.signInWithPhoneNumber(phone, verify).then((res) => {
-            setResult(res)
-            // setModal(true)
-            alert('then in ressend')
-        }).catch((err) => {
-            console.log(err);
-            alert('catch')
-            console.log('otp error');
-        })
+    // const resentHandle = async(values) => {
+    //     // console.log(phone+'asdf');
+    //     // console.log(verify+'sdaf');
+    //     // setIsSubmitDisabled(true);
 
-        setRemainingTime(60);
-        setIsSubmitDisabled(false);
-       
-    }
+    //     // auth.signInWithPhoneNumber(phone, verify).then((res) => {
+    //     //     setResult(res)
+    //     //     // setModal(true)
+    //     //     alert('then in ressend')
+    //     // }).catch((err) => {
+    //     //     console.log(err);
+    //     //     alert('catch')
+    //     //     console.log('otp error');
+    //     // })
+    //     try {
+    //         console.log('this is values section');
+    //         console.log(values);
+    //         // let userCheck = await UserApi.post('/resendOtp',{values})
+    //         setRemainingTime(60);
+    //         setIsSubmitDisabled(false);
+    //     } catch (error) {
+    //     }
+    // }
 
     const handleLogin = async () => {
         navigate('/login')
     }
 
     const onSubmit = async (values) => {
-        const phoneNum = `+91${values.phone}`
-        setPhone(phoneNum)
+        // const phoneNum = `+91${values.phone}`
+        // setPhone(phoneNum)
         console.log('onsubmit');
 
         try {
             let userCheck = await UserApi.post('/userCheck', { values })
             console.log(userCheck);
 
-            let verify1 = await new firebase.auth.RecaptchaVerifier('recaptcha-container')
-            console.log(verify1);
-             setVerify(verify1)
-            
+            // let verify1 = await new firebase.auth.RecaptchaVerifier('recaptcha-container')
+            // console.log(verify1);
+            //  setVerify(verify1)
 
-            auth.signInWithPhoneNumber(phoneNum, verify1).then((res) => {
-                setResult(res)
-                setModal(true)
-                setRemainingTime(60)
-                setIsSubmitDisabled(false)
-            }).catch((err) => {
-                console.log(err);
-                console.log('otp error');
-            })
+
+            // auth.signInWithPhoneNumber(phoneNum, verify1).then((res) => {
+            //     setResult(res)
+            setModal(true)
+            setRemainingTime(60)
+            setIsSubmitDisabled(false)
+            // }).catch((err) => {
+            //     console.log(err);
+            //     console.log('otp error');
+            // })
 
 
 
@@ -307,10 +324,10 @@ function UserRegistration() {
                             <div className="flex flex-col items-center justify-center text-center space-y-2">
                                 <div className="font-semibold text-3xl">
 
-                                    <p>Mobile Verification</p>
+                                    <p>Email Verification</p>
                                 </div>
                                 <div className="flex flex-row text-sm font-medium text-gray-400">
-                                    <p>We have sent a code to your Mobile Number </p>
+                                    <p>We have sent a code to your Email </p>
                                 </div>
                             </div>
 
@@ -329,7 +346,7 @@ function UserRegistration() {
                                         </div>
                                     )}
                                     {/* --------------- */}
-                                    
+
                                     <div className="flex flex-col space-y-16">
                                         <div className="flex flex-row items-center justify-between mx-auto w-full max-w-xs">
                                             <div className="h-16">
@@ -342,7 +359,7 @@ function UserRegistration() {
                                                 {!isSubmitDisabled ?
 
                                                     <button type='submit' className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-blue-700 border-none text-white text-sm shadow-sm" >
-                                                        Verify Phone
+                                                        Verify Email
                                                     </button>
                                                     : ''}
 
@@ -355,7 +372,7 @@ function UserRegistration() {
                                         </div>
                                     </div>
                                 </form>
-                                {isSubmitDisabled ? <button type='submit' onClick={resentHandle} className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-red-700 border-none text-white text-sm shadow-sm" >
+                                {isSubmitDisabled ? <button type='submit' onClick={formik.handleSubmit} className="flex flex-row items-center justify-center text-center w-full border rounded-xl outline-none py-5 bg-red-700 border-none text-white text-sm shadow-sm" >
                                     Resent Otp
                                 </button> : ''}
 

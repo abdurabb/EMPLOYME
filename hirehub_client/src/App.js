@@ -50,9 +50,7 @@ import CompanyChat from './pages/CompanyPages/CompanyChat';
 
 
 function App() {
-
-
-
+  
   return (
     <div className="App">
       < Toaster />
