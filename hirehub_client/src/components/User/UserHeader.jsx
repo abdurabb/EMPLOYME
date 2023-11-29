@@ -52,7 +52,7 @@ function UserHeader() {
             {open ? <AiOutlineClose /> : <AiOutlineMenu />}
           </div>
 
-          <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? '  z-0 relative ' : ' md:opacity-100 opacity-0'} `}>
+          <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto  left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'z-1 relative ' : ' md:opacity-100 opacity-0'} `}>
             <li className='md:ml-8 text-xl md:my-0 my-7  text-gray-800 hover:text-gray-400 duration-500 ' ><Link to={'/'} > Home</Link> </li>
             <li className='md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500'><Link to={'/jobListing'}> Jobs</Link></li>
             {/* <li className='md:ml-8 text-xl md:my-0 my-7 text-gray-800 hover:text-gray-400 duration-500'><Link> About Us</Link></li>
@@ -63,7 +63,7 @@ function UserHeader() {
             {!user1 ? (
               <button
                 onClick={handleLog}
-                className="bg-indigo-500 hover:bg-indigo-700 text-white font-[Poppins] py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500"
+                className="bg-indigo-500 hover:bg-indigo-700 text-white font-[Poppins] py-2 px-6 rounded md:ml-8  duration-500"
               >
                 Login
               </button>
@@ -79,7 +79,7 @@ function UserHeader() {
 
                 <button
                   onClick={handleLogout}
-                  className="bg-indigo-500 hover:bg-indigo-700 text-white font-[Poppins] py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500"
+                  className="bg-indigo-500 hover:bg-indigo-700 text-white font-[Poppins] py-2 px-6 rounded md:ml-8  duration-500"
                 >
                   Logout
                 </button>
